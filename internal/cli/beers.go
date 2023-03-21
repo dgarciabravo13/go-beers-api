@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	beerscli "github.com/dgarciabravo13/go-beers-api/internal"
+	"github.com/dgarciabravo13/go-beers-api/internal/storage/jsontocsv"
 	"github.com/spf13/cobra"
 )
 
@@ -29,6 +30,8 @@ func InitBeersCmd(repository beerscli.BeerRepo) *cobra.Command {
 func runBeersFn(repository beerscli.BeerRepo) CobraFn {
 	return func(cmd *cobra.Command, args []string) {
 		beers, _ := repository.GetBeers()
+
+		jsontocsv.JsonToCsv(beers)
 
 		id, _ := cmd.Flags().GetString(idFlag)
 

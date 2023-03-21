@@ -18,8 +18,8 @@ type beerRepo struct {
 	url string
 }
 
-// NewOntarioRepository fetch beers data from csv
-func NewOntarioRepository() beerscli.BeerRepo {
+// NewApiRepository to get beers
+func NewApiRepository() beerscli.BeerRepo {
 	return &beerRepo{url: apiURL}
 }
 
